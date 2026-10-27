@@ -118,6 +118,31 @@ pnpm preview
 
 `index.html` 包含 title、description、Open Graph 与图片元信息。绑定真实生产域名后建议补充 canonical 与 `og:url`，并把 `og:image` 地址设置为该域名下分享图的绝对 HTTPS 地址；当前不编造域名。
 
+## Docker 部署
+
+需要安装并启动 Docker，使用 Linux 容器。在仓库根目录执行：
+
+```powershell
+docker build -t starisle-website .
+docker run -d --name starisle-website --restart unless-stopped -p 8080:80 starisle-website
+```
+
+浏览器访问 `http://localhost:8080`；远程部署时将 `localhost` 替换为服务器地址，并按需开放端口。可修改 `-p` 左侧的 `8080`，容器内部端口保持 `80`。
+
+- `Dockerfile` 使用 Node.js 24 Alpine 和固定的 pnpm 10.30.3，通过锁文件安装依赖并运行 `pnpm build`；最终镜像使用 Nginx，仅复制构建产物，不包含源码或 Node.js 构建依赖。
+- `nginx.conf` 提供页面回退、带哈希资源的长期缓存和 HTML 缓存校验。默认部署在域名根路径 `/`，无需挂载本地 `dist`。
+- `.dockerignore` 排除本地依赖、构建产物、Git 历史及环境/包管理器凭据文件；不要将密钥写入源码或构建参数。
+- 修改页面内容或站点配置后，需重新构建镜像并替换容器：
+
+```powershell
+docker build -t starisle-website .
+docker stop starisle-website
+docker rm starisle-website
+docker run -d --name starisle-website --restart unless-stopped -p 8080:80 starisle-website
+```
+
+查看日志：`docker logs starisle-website`。生产环境建议由服务器反向代理或负载均衡器提供 HTTPS，再转发到此容器。
+
 ## Nginx 部署
 
 执行 `pnpm build`，将 **`dist` 的内容**上传到服务器站点目录，例如 `/var/www/starisle`。不要将源码目录或开发服务器用作线上服务。
