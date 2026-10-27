@@ -25,3 +25,21 @@ desktop.ini
 
 # Logs
 *.log
+
+# Node / Vite / pnpm
+node_modules/
+dist/
+dist-ssr/
+.pnpm-store/
+*.local
+*.tsbuildinfo
+coverage/
+playwright-report/
+test-results/
+
+# Environment and local secrets
+.env
+.env.*
+!.env.example
+
+node_modules

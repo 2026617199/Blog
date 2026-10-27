@@ -1,0 +1,46 @@
+export const siteConfig = {
+  name: '星屿',
+  englishName: 'StarIsle',
+  tagline: '让每一次相遇，都有温度。',
+  status: '产品正在开发中',
+  icp: { label: '', url: '' },
+  nav: [
+    { label: '首页', href: '#home' },
+    { label: '产品特色', href: '#features' },
+    { label: '联机互动', href: '#together' },
+    { label: '跨端体验', href: '#platforms' },
+    { label: '下载应用', href: '#download' },
+  ],
+  hero: {
+    eyebrow: '给日常，留一小片温柔',
+    title: ['让陪伴，', '发生在每一个', '桌面。'],
+    description: '一只会陪伴你的桌宠，一群随时可以遇见的朋友。在小小的桌面世界里，聊天、互动、相遇，让每一天多一点温暖。',
+    tags: ['多人联机', '互动桌宠', '治愈陪伴'],
+  },
+  demo: {
+    title: '即使相隔很远，',
+    titleSecond: '也能在同一片星光下相遇。',
+    description: '不必找话题，也不必急着说什么。一起发呆的时光，也很珍贵。',
+    room: '云朵休息站',
+    characters: [
+      { name: '小芽', variant: 'mint', mood: '在等一个温柔的招呼' },
+      { name: '桃桃', variant: 'peach', mood: '今天也要晒晒太阳' },
+      { name: '星眠', variant: 'lavender', mood: '收集今天的小美好' },
+    ],
+    messages: [
+      { pet: 0, text: '今天也要开心呀～' },
+      { pet: 1, text: '你来啦！一起待会儿吧 ✨' },
+      { pet: 0, text: '好呀，陪你摸鱼一会儿～' },
+      { pet: 2, text: '把今天的小美好，分你一半 ♡' },
+    ],
+    greetings: ['你好呀，送你一片小叶子 🌱', '抱抱你，今天辛苦啦 ♡', '叮！收到一份星光 ✨'],
+    suggestions: ['今天也要开心呀～', '一起发会儿呆吧 ☁', '送你一颗小星星 ✨'],
+  },
+  download: {
+    title: '准备好，迎接你的',
+    titleSecond: '桌面小伙伴了吗？',
+    description: '我们的星屿世界正在慢慢成形，期待与你见面的那一天。',
+    dialogTitle: '小小的期待，即将抵达 ✨',
+    dialogDescription: '星屿的安装程序正在开发当中，暂时还不能下载哦。感谢你的关注，我们正在努力让这个温暖的小世界早日与你见面！',
+  },
+} as const
